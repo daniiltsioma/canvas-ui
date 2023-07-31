@@ -1,6 +1,14 @@
 import React from "react";
 import Header from "./components/Header/Header";
-import Card, { CardProps } from "./components/cards/Card/Card";
+import Card from "./components/cards/Card/Card";
+import { getColorClass } from "utils/tailwindUtils";
+
+interface CardProps {
+  imageUrl: string;
+  title: string;
+  term: string;
+  color: string;
+}
 
 function App() {
   const cards: CardProps[] = [
@@ -29,8 +37,14 @@ function App() {
       <div className="container px-5">
         <Header>Dashboard</Header>
         <div className="flex space-x-6 pt-5">
-          {cards.map((cardProps) => (
-            <Card key={cardProps.title} {...cardProps} />
+          {cards.map((card) => (
+            <Card
+              key={card.title}
+              imageUrl={card.imageUrl}
+              title={card.title}
+              term={card.term}
+              colorClass={getColorClass(card.color, 500)}
+            />
           ))}
         </div>
       </div>

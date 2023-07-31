@@ -1,4 +1,3 @@
-import { ReactNode } from "react";
 import { ComponentProps } from "../../types";
 
 const Header = ({ children }: ComponentProps) => {

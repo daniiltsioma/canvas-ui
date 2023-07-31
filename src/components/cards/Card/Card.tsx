@@ -1,11 +1,11 @@
-export interface CardProps {
+interface Props {
   imageUrl: string;
   title: string;
   term: string;
-  color: string;
+  colorClass: string;
 }
 
-const Card = ({ imageUrl, title, term, color }: CardProps) => {
+const Card = ({ imageUrl, title, term, colorClass }: Props) => {
   return (
     <div className="max-w-sm w-[300px] border border-gray-200 shadow">
       <a href="#">
@@ -13,7 +13,7 @@ const Card = ({ imageUrl, title, term, color }: CardProps) => {
       </a>
       <div className="">
         <a href="#" className="block p-4">
-          <div className={`text-md text-500 font-semibold`}>{title}</div>
+          <div className={`text-md ${colorClass} font-semibold`}>{title}</div>
           <div className="text-sm">{term}</div>
         </a>
       </div>
