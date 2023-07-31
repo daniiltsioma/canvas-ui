@@ -32,7 +32,7 @@ const Dashboard = () => {
 
   return (
     <div className="container px-5">
-      <Header>Dashboard</Header>
+      <Header size="lg">Dashboard</Header>
       <div className="flex space-x-6 pt-5">
         {cards.map((card) => (
           <Card
