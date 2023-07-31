@@ -1,54 +1,7 @@
-import React from "react";
-import Header from "./components/Header/Header";
-import Card from "./components/cards/Card/Card";
-
-interface CardProps {
-  imageUrl: string;
-  title: string;
-  term: string;
-  color: string;
-}
+import { Outlet } from "react-router-dom";
 
 function App() {
-  const cards: CardProps[] = [
-    {
-      imageUrl: "/assets/images/class-1.jpeg",
-      title: "Calculus III",
-      term: "Spring 2023",
-      color: "#EA580C",
-    },
-    {
-      imageUrl: "/assets/images/class-2.jpeg",
-      title: "Physics III",
-      term: "Spring 2023",
-      color: "#DB2777",
-    },
-    {
-      imageUrl: "/assets/images/class-3.jpg",
-      title: "Global Environmental Change",
-      term: "Spring 2023",
-      color: "#52525B",
-    },
-  ];
-
-  return (
-    <>
-      <div className="container px-5">
-        <Header>Dashboard</Header>
-        <div className="flex space-x-6 pt-5">
-          {cards.map((card) => (
-            <Card
-              key={card.title}
-              imageUrl={card.imageUrl}
-              title={card.title}
-              term={card.term}
-              color={card.color}
-            />
-          ))}
-        </div>
-      </div>
-    </>
-  );
+  return <Outlet></Outlet>;
 }
 
 export default App;
