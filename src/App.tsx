@@ -1,7 +1,6 @@
 import React from "react";
 import Header from "./components/Header/Header";
 import Card from "./components/cards/Card/Card";
-import { getColorClass } from "utils/tailwindUtils";
 
 interface CardProps {
   imageUrl: string;
@@ -16,19 +15,19 @@ function App() {
       imageUrl: "/assets/images/class-1.jpeg",
       title: "Calculus III",
       term: "Spring 2023",
-      color: "orange",
+      color: "#EA580C",
     },
     {
       imageUrl: "/assets/images/class-2.jpeg",
       title: "Physics III",
       term: "Spring 2023",
-      color: "pink",
+      color: "#DB2777",
     },
     {
       imageUrl: "/assets/images/class-3.jpg",
       title: "Global Environmental Change",
       term: "Spring 2023",
-      color: "gray",
+      color: "#52525B",
     },
   ];
 
@@ -43,7 +42,7 @@ function App() {
               imageUrl={card.imageUrl}
               title={card.title}
               term={card.term}
-              colorClass={getColorClass(card.color, 500)}
+              color={card.color}
             />
           ))}
         </div>

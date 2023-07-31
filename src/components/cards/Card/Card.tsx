@@ -2,18 +2,24 @@ interface Props {
   imageUrl: string;
   title: string;
   term: string;
-  colorClass: string;
+  color: string;
 }
 
-const Card = ({ imageUrl, title, term, colorClass }: Props) => {
+const Card = ({ imageUrl, title, term, color }: Props) => {
   return (
     <div className="max-w-sm w-[300px] border border-gray-200 shadow">
-      <a href="#">
+      <a href="#" className="relative">
         <img src={imageUrl} alt={title} className="w-full" />
+        <div
+          className={`absolute top-0 left-0 w-full h-full opacity-60 z-9`}
+          style={{ backgroundColor: color }}
+        ></div>
       </a>
       <div className="">
         <a href="#" className="block p-4">
-          <div className={`text-md ${colorClass} font-semibold`}>{title}</div>
+          <div className={`text-md font-semibold`} style={{ color: color }}>
+            {title}
+          </div>
           <div className="text-sm">{term}</div>
         </a>
       </div>
