@@ -7,7 +7,7 @@ interface Props {
 
 const Card = ({ imageUrl, title, term, color }: Props) => {
   return (
-    <div className="max-w-sm w-[300px] border border-gray-200 shadow">
+    <div className="max-w-sm w-[300px] border border-gray-200 drop-shadow-lg rounded-xs">
       <a href="#" className="relative">
         <img src={imageUrl} alt={title} className="w-full" />
         <div
