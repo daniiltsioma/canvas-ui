@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 interface Props {
   term: string;
@@ -7,9 +7,8 @@ interface Props {
 const Sidebar = ({ term }: Props) => {
   const items = [
     {
-      path: "/",
+      path: "/course",
       text: "Home",
-      active: true,
     },
     {
       path: "/course/announcements",
@@ -32,15 +31,18 @@ const Sidebar = ({ term }: Props) => {
         <ul>
           {items.map((item) => (
             <li>
-              <Link
+              <NavLink
                 to={item.path}
-                className={[
-                  "block w-full hover:underline text-blue-800 p-2",
-                  item.active && "border-l-4 border-blue-800",
-                ].join(" ")}
+                end
+                className={({ isActive }) =>
+                  [
+                    "block w-full hover:underline text-blue-800 p-2 border-l-4",
+                    isActive ? "border-blue-800" : "border-transparent",
+                  ].join(" ")
+                }
               >
                 {item.text}
-              </Link>
+              </NavLink>
             </li>
           ))}
         </ul>
