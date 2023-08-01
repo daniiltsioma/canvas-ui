@@ -3,9 +3,10 @@ import { ReactNode } from "react";
 interface Props {
   children: ReactNode;
   size: "md" | "lg";
+  bold?: boolean;
 }
 
-const Header = ({ children, size }: Props) => {
+const Header = ({ children, size, bold }: Props) => {
   const classes = [
     "text-gray-900",
     "font-light",
@@ -14,6 +15,7 @@ const Header = ({ children, size }: Props) => {
     "pb-3",
     "border-b",
     "border-b-slate-300",
+    "w-full",
   ];
 
   switch (size) {

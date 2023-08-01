@@ -1,6 +1,10 @@
 import { Link } from "react-router-dom";
 
-const Sidebar = () => {
+interface Props {
+  term: string;
+}
+
+const Sidebar = ({ term }: Props) => {
   const items = [
     {
       path: "/",
@@ -21,11 +25,12 @@ const Sidebar = () => {
   ];
 
   return (
-    <aside className="w-60">
+    <aside className="w-1/5 flex-shrink-0 px-4 pt-8">
+      <div className="px-2 text-xs">{term}</div>
       <div className="py-4">
         <ul>
           {items.map((item) => (
-            <li className="p-2 w-full">
+            <li className="p-2">
               <Link
                 to={item.path}
                 className="block w-full hover:underline text-blue-800"

@@ -4,10 +4,10 @@ import { Outlet } from "react-router-dom";
 
 const Course = () => {
   return (
-    <div className="container px-5">
+    <div className="w-full container px-5">
       <Header size="md">MTH-253 Calculus III</Header>
-      <div className="flex mt-12">
-        <Sidebar />
+      <div className="w-full flex items-start">
+        <Sidebar term="Spring 2023" />
         <Outlet />
       </div>
     </div>

@@ -5,7 +5,7 @@ interface Props {
   color: string;
 }
 
-const Card = ({ imageUrl, title, term, color }: Props) => {
+const ImageCard = ({ imageUrl, title, term, color }: Props) => {
   return (
     <div className="max-w-sm w-[300px] border border-gray-200 drop-shadow-lg rounded-xs">
       <a href="/course" className="relative">
@@ -27,4 +27,4 @@ const Card = ({ imageUrl, title, term, color }: Props) => {
   );
 };
 
-export default Card;
+export default ImageCard;

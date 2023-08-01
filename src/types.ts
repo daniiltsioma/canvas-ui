@@ -1,5 +1,6 @@
-import { ReactNode } from "react";
-
-export interface ComponentProps {
-  children: ReactNode;
+export interface Announcement {
+  title: string;
+  description: string;
+  postedOn: number;
+  name: string;
 }

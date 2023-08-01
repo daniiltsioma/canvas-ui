@@ -1,5 +1,5 @@
 import Header from "components/Header/Header";
-import Card from "components/cards/Card/Card";
+import ImageCard from "components/cards/Card/ImageCard";
 
 interface CardProps {
   imageUrl: string;
@@ -35,7 +35,7 @@ const Dashboard = () => {
       <Header size="lg">Dashboard</Header>
       <div className="flex space-x-6 pt-5">
         {cards.map((card) => (
-          <Card
+          <ImageCard
             key={card.title}
             imageUrl={card.imageUrl}
             title={card.title}
