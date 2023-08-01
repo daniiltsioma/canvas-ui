@@ -9,9 +9,10 @@ const Sidebar = ({ term }: Props) => {
     {
       path: "/",
       text: "Home",
+      active: true,
     },
     {
-      path: "/announcements",
+      path: "/course/announcements",
       text: "Announcements",
     },
     {
@@ -30,10 +31,13 @@ const Sidebar = ({ term }: Props) => {
       <div className="py-4">
         <ul>
           {items.map((item) => (
-            <li className="p-2">
+            <li>
               <Link
                 to={item.path}
-                className="block w-full hover:underline text-blue-800"
+                className={[
+                  "block w-full hover:underline text-blue-800 p-2",
+                  item.active && "border-l-4 border-blue-800",
+                ].join(" ")}
               >
                 {item.text}
               </Link>

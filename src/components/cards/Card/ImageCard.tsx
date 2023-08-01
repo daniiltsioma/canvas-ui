@@ -16,7 +16,7 @@ const ImageCard = ({ imageUrl, title, term, color }: Props) => {
         ></div>
       </a>
       <div className="">
-        <a href="#" className="block p-4">
+        <a href="/course" className="block p-4">
           <div className={`text-md font-semibold`} style={{ color: color }}>
             {title}
           </div>
