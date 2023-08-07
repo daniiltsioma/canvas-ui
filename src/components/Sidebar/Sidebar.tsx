@@ -1,25 +1,27 @@
-import { Link, NavLink } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 
 interface Props {
   term: string;
 }
 
 const Sidebar = ({ term }: Props) => {
+  const { courseId } = useParams();
+
   const items = [
     {
-      path: "/course",
+      path: `/course/${courseId}`,
       text: "Home",
     },
     {
-      path: "/course/announcements",
+      path: `/course/${courseId}/announcements`,
       text: "Announcements",
     },
     {
-      path: "/grades",
+      path: `/course/${courseId}/grades`,
       text: "Grades",
     },
     {
-      path: "/people",
+      path: `/course/${courseId}/people`,
       text: "People",
     },
   ];

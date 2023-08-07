@@ -9,7 +9,7 @@ import Course from "views/course/Course";
 import CourseHome from "views/course/CourseHome";
 import CourseAnnouncements from "views/course/CourseAnnouncements";
 import Announcement from "views/course/Announcement";
-import { getCourseById, getCourseTitleById, getCourses } from "utils/courses";
+import { CourseData, getCurrentCourse, getAllCourses } from "utils/courses";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -27,22 +27,24 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Dashboard />,
-        loader: getCourses,
+        loader: getAllCourses,
       },
     ],
   },
   {
     path: "/course/:courseId",
     element: <Course />,
-    loader: getCourseTitleById,
+    loader: getCurrentCourse,
     handle: {
-      crumb: (title: string) => <Link to="/course/:courseId">{title}</Link>,
+      crumb: (course: CourseData) => (
+        <Link to={`/course/${course.id}`}>{course.title}</Link>
+      ),
     },
     children: [
       {
         path: "/course/:courseId",
         element: <CourseHome />,
-        loader: getCourseById,
+        loader: getCurrentCourse,
       },
       {
         path: "/course/:courseId/announcements",

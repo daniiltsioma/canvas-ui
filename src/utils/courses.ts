@@ -30,7 +30,7 @@ const courses: CourseData[] = [
   },
 ];
 
-export const getCourses = () => {
+export const getAllCourses = () => {
   return courses;
 };
 
@@ -39,7 +39,7 @@ export const getCourseTitleById = ({ params }: any) => {
   return course ? course.title : null;
 };
 
-export const getCourseById = ({ params }: any) => {
+export const getCurrentCourse = ({ params }: any) => {
   let course = courses.find((course) => course.id === Number(params.courseId));
 
   return course || null;
