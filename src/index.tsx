@@ -9,12 +9,13 @@ import Course from "views/course/Course";
 import CourseHome from "views/course/CourseHome";
 import CourseAnnouncements from "views/course/CourseAnnouncements";
 import Announcement from "views/course/Announcement";
+import { getCourseById, getCourseTitleById, getCourses } from "utils/courses";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 
-export interface RouteData {
+interface RouteData {
   title: string;
 }
 
@@ -26,44 +27,42 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Dashboard />,
+        loader: getCourses,
       },
     ],
   },
   {
-    path: "/course",
+    path: "/course/:courseId",
     element: <Course />,
-    loader: () => {
-      return {
-        title: "MTH-253 Calculus III",
-      };
-    },
+    loader: getCourseTitleById,
     handle: {
-      crumb: (data: RouteData) => <Link to="/course">{data.title}</Link>,
+      crumb: (title: string) => <Link to="/course/:courseId">{title}</Link>,
     },
     children: [
       {
-        path: "/course",
+        path: "/course/:courseId",
         element: <CourseHome />,
+        loader: getCourseById,
       },
       {
-        path: "/course/announcements",
+        path: "/course/:courseId/announcements",
         loader: () => {
           return {
             title: "Announcements",
           };
         },
         handle: {
-          crumb: (data: RouteData) => (
-            <Link to="/course/announcements">{data.title}</Link>
+          crumb: () => (
+            <Link to="/course/:courseId/announcements">Announcements</Link>
           ),
         },
         children: [
           {
-            path: "/course/announcements",
+            path: "/course/:courseId/announcements",
             element: <CourseAnnouncements />,
           },
           {
-            path: "/course/announcements/:id",
+            path: "/course/:courseId/announcements/:announcementId",
             element: <Announcement />,
             loader: () => {
               return {
