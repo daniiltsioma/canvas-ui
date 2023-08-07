@@ -16,6 +16,12 @@ export interface AnnouncementsData {
   announcements: Announcement[];
 }
 
+export interface AnnouncementData {
+  announcementId: number;
+  title: string;
+  courseId: number;
+}
+
 const courses: CourseData[] = [
   {
     id: 1,
@@ -200,5 +206,20 @@ export const announcementsLoader = ({ params }: any) => {
     courseId: params.courseId,
     title: "Announcements",
     announcements,
+  };
+};
+
+export const announcementLoader = ({ params }: any) => {
+  const course = courses.find(
+    (course) => course.id === Number(params.courseId)
+  ) as CourseData;
+  const announcement = course.announcements.find(
+    (ann) => ann.id === Number(params.announcementId)
+  ) as Announcement;
+
+  return {
+    announcementId: announcement.id,
+    title: announcement.title,
+    courseId: announcement.courseId,
   };
 };

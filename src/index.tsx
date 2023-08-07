@@ -15,6 +15,8 @@ import {
   getAllCourses,
   announcementsLoader,
   AnnouncementsData,
+  announcementLoader,
+  AnnouncementData,
 } from "utils/courses";
 
 const root = ReactDOM.createRoot(
@@ -49,35 +51,34 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/course/:courseId",
-        element: <CourseHome />,
         loader: getCurrentCourse,
+        element: <CourseHome />,
       },
       {
         path: "/course/:courseId/announcements",
+        loader: getCurrentCourse,
+        handle: {
+          crumb: (course: CourseData) => (
+            <Link to={`/course/${course.id}/announcements`}>Announcements</Link>
+          ),
+        },
         children: [
           {
             path: "/course/:courseId/announcements",
             element: <CourseAnnouncements />,
             loader: announcementsLoader,
-            handle: {
-              crumb: (annData: AnnouncementsData) => (
-                <Link to={`/course/${annData.courseId}/announcements`}>
-                  Announcements
-                </Link>
-              ),
-            },
           },
           {
             path: "/course/:courseId/announcements/:announcementId",
             element: <Announcement />,
-            loader: () => {
-              return {
-                title: "Sample Announcement",
-              };
-            },
+            loader: announcementLoader,
             handle: {
-              crumb: (data: RouteData) => (
-                <Link to="/course/announcements/1">{data.title}</Link>
+              crumb: (data: AnnouncementData) => (
+                <Link
+                  to={`/course/${data.courseId}/announcements/${data.announcementId}`}
+                >
+                  {data.title}
+                </Link>
               ),
             },
           },
