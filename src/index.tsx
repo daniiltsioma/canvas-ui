@@ -8,6 +8,7 @@ import Dashboard from "views/Dashboard";
 import Course from "views/course/Course";
 import CourseHome from "views/course/CourseHome";
 import CourseAnnouncements from "views/course/CourseAnnouncements";
+import Announcement from "views/course/Announcement";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -34,7 +35,16 @@ const router = createBrowserRouter([
       },
       {
         path: "/course/announcements",
-        element: <CourseAnnouncements />,
+        children: [
+          {
+            path: "/course/announcements/",
+            element: <CourseAnnouncements />,
+          },
+          {
+            path: "/course/announcements/:id",
+            element: <Announcement />,
+          },
+        ],
       },
     ],
   },

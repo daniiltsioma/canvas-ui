@@ -1,10 +1,13 @@
 import Header from "components/Header/Header";
 import ListCard from "components/cards/Card/ListCard";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
+import { Link } from "react-router-dom";
 import { Announcement } from "types";
 
 export const announcements: Announcement[] = [
   {
+    id: 1,
+    courseId: 2,
     title: "Final exam coming!",
     description:
       "Hey Everyone, quick reminder: you can bring one index card with any notes you want",
@@ -12,6 +15,8 @@ export const announcements: Announcement[] = [
     name: "John Doe",
   },
   {
+    id: 2,
+    courseId: 2,
     title: "Case Study: Part 2",
     description:
       "I have attached the case study part 2 template with some additional notes.  I have also attached a notes worksheet with example sentences that could be used in case study part 2.  These are additional notes to help frame your case study.",
@@ -19,9 +24,11 @@ export const announcements: Announcement[] = [
     name: "Brian Chesky",
   },
   {
+    id: 3,
+    courseId: 2,
     title: "Timeline for project completion",
-    description: `Hi all, a brief timeline for your projects:
-
+    description: `
+    Hi all, a brief timeline for your projects:
       Week 8: By next wednesday, 11:59pm:  submit your rough draft for peer review.
       Week 9: By your mentor session:  review your peer's submission and return it, discuss briefly in mentor session.
       Week 10:  Make revisions on your report.  Website logistics/layout will be discussed in mentor session.
@@ -49,11 +56,13 @@ const CourseHome = () => {
         <strong>Recent Announcements</strong>
       </Header>
       <div className="border-b border-b-slate-300">
-        <ListCard
-          title={ann.title}
-          description={ann.description}
-          name={ann.name}
-        />
+        <Link to={`/course/announcements/${ann.id}`}>
+          <ListCard
+            title={ann.title}
+            description={ann.description}
+            name={ann.name}
+          />
+        </Link>
       </div>
       <div className="mt-4"></div>
       <Header size="lg">Calculus III Spring 2023</Header>
