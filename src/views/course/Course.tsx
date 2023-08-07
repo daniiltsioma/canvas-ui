@@ -7,7 +7,6 @@ const Course = () => {
   return (
     <div className="w-full container px-5">
       <Header size="md">
-        {/* MTH-253 Calculus III */}
         <Breadcrumbs />
       </Header>
       <div className="w-full flex items-start">

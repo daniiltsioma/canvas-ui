@@ -14,6 +14,10 @@ const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 
+export interface RouteData {
+  title: string;
+}
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -26,32 +30,49 @@ const router = createBrowserRouter([
     ],
   },
   {
-    path: "/course/",
+    path: "/course",
     element: <Course />,
+    loader: () => {
+      return {
+        title: "MTH-253 Calculus III",
+      };
+    },
     handle: {
-      crumb: () => <Link to="/course/">Course</Link>,
+      crumb: (data: RouteData) => <Link to="/course">{data.title}</Link>,
     },
     children: [
       {
-        path: "/course/",
+        path: "/course",
         element: <CourseHome />,
       },
       {
-        path: "/course/announcements/",
+        path: "/course/announcements",
+        loader: () => {
+          return {
+            title: "Announcements",
+          };
+        },
         handle: {
-          crumb: () => <Link to="/course/announcements/">Announcements</Link>,
+          crumb: (data: RouteData) => (
+            <Link to="/course/announcements">{data.title}</Link>
+          ),
         },
         children: [
           {
-            path: "/course/announcements/",
+            path: "/course/announcements",
             element: <CourseAnnouncements />,
           },
           {
             path: "/course/announcements/:id",
             element: <Announcement />,
+            loader: () => {
+              return {
+                title: "Sample Announcement",
+              };
+            },
             handle: {
-              crumb: () => (
-                <Link to="/course/announcements/1">Sample Announcement</Link>
+              crumb: (data: RouteData) => (
+                <Link to="/course/announcements/1">{data.title}</Link>
               ),
             },
           },
