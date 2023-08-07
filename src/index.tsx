@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { Link, RouterProvider, createBrowserRouter } from "react-router-dom";
 import Dashboard from "views/Dashboard";
 import Course from "views/course/Course";
 import CourseHome from "views/course/CourseHome";
@@ -28,13 +28,19 @@ const router = createBrowserRouter([
   {
     path: "/course/",
     element: <Course />,
+    handle: {
+      crumb: () => <Link to="/course/">Course</Link>,
+    },
     children: [
       {
         path: "/course/",
         element: <CourseHome />,
       },
       {
-        path: "/course/announcements",
+        path: "/course/announcements/",
+        handle: {
+          crumb: () => <Link to="/course/announcements/">Announcements</Link>,
+        },
         children: [
           {
             path: "/course/announcements/",
@@ -43,6 +49,11 @@ const router = createBrowserRouter([
           {
             path: "/course/announcements/:id",
             element: <Announcement />,
+            handle: {
+              crumb: () => (
+                <Link to="/course/announcements/1">Sample Announcement</Link>
+              ),
+            },
           },
         ],
       },
