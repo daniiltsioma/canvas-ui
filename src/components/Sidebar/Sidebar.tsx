@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { NavLink, useLocation, useParams } from "react-router-dom";
 
 interface Props {
@@ -6,7 +6,6 @@ interface Props {
 }
 
 const Sidebar = ({ term }: Props) => {
-  const [isChildActive, setIsChildActive] = useState();
   const { courseId } = useParams();
 
   const location = useLocation();

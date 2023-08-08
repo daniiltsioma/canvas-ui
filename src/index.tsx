@@ -14,7 +14,6 @@ import {
   getCurrentCourse,
   getAllCourses,
   announcementsLoader,
-  AnnouncementsData,
   announcementLoader,
   AnnouncementData,
 } from "utils/courses";
@@ -22,10 +21,6 @@ import {
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
-
-interface RouteData {
-  title: string;
-}
 
 const router = createBrowserRouter([
   {
