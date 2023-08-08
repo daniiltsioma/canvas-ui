@@ -10,7 +10,7 @@ const Course = () => {
         <Breadcrumbs />
       </Header>
       <div className="w-full flex items-start">
-        <Sidebar term="Spring 2023" />
+        <Sidebar />
         <Outlet />
       </div>
     </div>

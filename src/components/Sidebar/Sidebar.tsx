@@ -1,19 +1,11 @@
-import { useEffect } from "react";
-import { NavLink, useLocation, useParams } from "react-router-dom";
+import { NavLink, useLoaderData, useLocation } from "react-router-dom";
+import { CourseData } from "utils/courses";
 
-interface Props {
-  term: string;
-}
-
-const Sidebar = ({ term }: Props) => {
-  const { courseId } = useParams();
-
+const Sidebar = () => {
   const location = useLocation();
 
-  useEffect(() => {
-    console.log(location.pathname.split("/"));
-    console.log(location.pathname.split("/").slice(3));
-  }, [location]);
+  const course = useLoaderData() as CourseData;
+  const courseId = course.id;
 
   const items = [
     {
@@ -36,7 +28,7 @@ const Sidebar = ({ term }: Props) => {
 
   return (
     <aside className="w-1/5 flex-shrink-0 px-4 pt-8">
-      <div className="px-2 text-xs">{term}</div>
+      <div className="px-2 text-xs">{course.term}</div>
       <div className="py-4">
         <ul>
           {items.map((item) => (

@@ -75,7 +75,7 @@ By Monday, Finals week:  Post your report to the class website.`,
     id: 2,
     imageUrl: "/assets/images/class-2.jpeg",
     title: "Physics III",
-    term: "Spring 2023",
+    term: "Fall 2023",
     color: "#DB2777",
     announcements: [
       {
