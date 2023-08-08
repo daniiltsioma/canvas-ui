@@ -1,11 +1,20 @@
-import { NavLink, useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { NavLink, useLocation, useParams } from "react-router-dom";
 
 interface Props {
   term: string;
 }
 
 const Sidebar = ({ term }: Props) => {
+  const [isChildActive, setIsChildActive] = useState();
   const { courseId } = useParams();
+
+  const location = useLocation();
+
+  useEffect(() => {
+    console.log(location.pathname.split("/"));
+    console.log(location.pathname.split("/").slice(3));
+  }, [location]);
 
   const items = [
     {
@@ -32,14 +41,22 @@ const Sidebar = ({ term }: Props) => {
       <div className="py-4">
         <ul>
           {items.map((item) => (
-            <li>
+            <li key={item.text}>
               <NavLink
                 to={item.path}
                 end
                 className={({ isActive }) =>
                   [
                     "block w-full hover:underline text-blue-800 p-2 border-l-4",
-                    isActive ? "border-blue-800" : "border-transparent",
+                    isActive ||
+                    // start isChildActive
+                    location.pathname
+                      .split("/")
+                      .slice(3)
+                      .includes(item.path.split("/").slice(3).join(""))
+                      ? // end isChildActive
+                        "border-blue-800"
+                      : "border-transparent",
                   ].join(" ")
                 }
               >
