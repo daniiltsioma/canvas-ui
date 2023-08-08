@@ -16,14 +16,14 @@ const Sidebar = () => {
       path: `/course/${courseId}/announcements`,
       text: "Announcements",
     },
-    {
-      path: `/course/${courseId}/grades`,
-      text: "Grades",
-    },
-    {
-      path: `/course/${courseId}/people`,
-      text: "People",
-    },
+    // {
+    //   path: `/course/${courseId}/grades`,
+    //   text: "Grades",
+    // },
+    // {
+    //   path: `/course/${courseId}/people`,
+    //   text: "People",
+    // },
   ];
 
   return (
