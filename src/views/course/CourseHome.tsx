@@ -15,7 +15,7 @@ const CourseHome = () => {
         <strong>Recent Announcements</strong>
       </Header>
       <div className="border-b border-b-slate-300">
-        <Link to={`/course/announcements/${ann.id}`}>
+        <Link to={`/course/${course.id}/announcements/${ann.id}`}>
           <ListCard
             title={ann.title}
             description={ann.description}
